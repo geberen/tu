@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ELFIN 💖 TURKAY</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #ffd1dc, #ffe4ec);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      color: #d63384;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #mainMessage {
+      display: none;
+      text-align: center;
+      max-width: 80%;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 0.3em;
+    }
+
+    p {
+      font-size: 1.5em;
+    }
+
+    .clickButton {
+      position: absolute;
+      background-color: #ff69b4;
+      border: none;
+      padding: 1em 2em;
+      font-size: 1.2em;
+      border-radius: 30px;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: transform 0.2s;
+    }
+
+    .clickButton:hover {
+      transform: scale(1.1);
+    }
+
+    .heart {
+      position: absolute;
+      color: #ff69b4;
+      font-size: 2em;
+      animation: float 4s ease-in infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-200px) scale(0.5); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="mainMessage">
+    <h1>dogum gunun kutlu olsun askim 0_o</h1>
+    <p>seninle her gunum daha guzel >_< seni cooook seviyorum 💖</p>
+  </div>
+
+  <button id="clickBtn" class="clickButton">bana tikla w_w</button>
+
+  <script>
+    const button = document.getElementById("clickBtn");
+    const message = document.getElementById("mainMessage");
+    let clickCount = 0;
+
+    function rainHearts() {
+      for (let i = 0; i < 30; i++) {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = Math.random() * 100 + "vh";
+        heart.innerText = "💗";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 4000);
+      }
+    }
+
+    function moveButton() {
+      const x = Math.random() * (window.innerWidth - 200); 
+      const y = Math.random() * (window.innerHeight - 100);
+      button.style.left = `${x}px`;
+      button.style.top = `${y}px`;
+    }
+
+    button.addEventListener("click", () => {
+      clickCount++;
+      rainHearts();
+
+      if (clickCount === 1) {
+        button.innerText = "simdi bana tikla ^_^";
+        moveButton();
+      } else if (clickCount === 2) {
+        button.innerText = "son kez tikla :3";
+        moveButton();
+      } else if (clickCount === 3) {
+        button.style.display = "none";
+        message.style.display = "block";
+      }
+    });
+  </script>
+
+</body>
+</html>
